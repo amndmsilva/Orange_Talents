@@ -2,6 +2,7 @@ package com.amandasantos.orangeTalents.controller;
 
 import com.amandasantos.orangeTalents.model.Usuario;
 import com.amandasantos.orangeTalents.repository.UsuarioRepository;
+import com.amandasantos.orangeTalents.service.CadastroUsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,6 +18,9 @@ public class UsuarioController {
 
     @Autowired
     private UsuarioRepository usuarioRepository;
+
+    @Autowired
+    private CadastroUsuarioService cadastroUsuario;
 
     @GetMapping
     public List<Usuario> listar() {
@@ -37,7 +41,7 @@ public class UsuarioController {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public Usuario cadastrar(@Valid @RequestBody Usuario usuario) {
-        return usuarioRepository.save(usuario);
+        return cadastroUsuario.salvar(usuario);
     }
 
     @DeleteMapping("/{usuarioId}")
@@ -46,7 +50,7 @@ public class UsuarioController {
             return ResponseEntity.notFound().build();
         }
 
-        usuarioRepository.deleteById(usuarioId);
+        cadastroUsuario.excluir(usuarioId);
 
         return ResponseEntity.noContent().build();
     }
