@@ -1,6 +1,9 @@
 package com.amandasantos.orangeTalents.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 import java.util.Date;
 import java.util.Objects;
 
@@ -9,20 +12,26 @@ public class Usuario {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column
     private Long id;
 
     @Column
+    @NotBlank
+    @Size(max = 255)
     private String nome;
 
     @Column
+    @NotBlank
+    @Email
+    @Size(max = 255)
     private String email;
 
     @Column
+    @Size(max = 14)
     private String cpf;
 
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name="data_nascimento")
+    @Size(max = 10)
     private Date dataNascimento;
 
     public Long getId() {
