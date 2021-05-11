@@ -31,7 +31,6 @@ public class Usuario {
 
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name="data_nascimento")
-    @Size(max = 10)
     private Date dataNascimento;
 
     public Long getId() {
