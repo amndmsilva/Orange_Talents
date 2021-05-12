@@ -1,8 +1,8 @@
-package com.amandasantos.orangeTalents.controller;
+package com.amandasantos.orangeTalents.api.controller;
 
-import com.amandasantos.orangeTalents.model.Usuario;
-import com.amandasantos.orangeTalents.repository.UsuarioRepository;
-import com.amandasantos.orangeTalents.service.CadastroUsuarioService;
+import com.amandasantos.orangeTalents.domain.model.Usuario;
+import com.amandasantos.orangeTalents.domain.repository.UsuarioRepository;
+import com.amandasantos.orangeTalents.domain.service.CadastroUsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

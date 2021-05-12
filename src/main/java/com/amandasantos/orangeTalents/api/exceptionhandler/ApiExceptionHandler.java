@@ -1,6 +1,6 @@
-package com.amandasantos.orangeTalents.exceptionhandler;
+package com.amandasantos.orangeTalents.api.exceptionhandler;
 
-import com.amandasantos.orangeTalents.exception.NegocioException;
+import com.amandasantos.orangeTalents.domain.exception.NegocioException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;

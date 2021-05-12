@@ -1,4 +1,4 @@
-package com.amandasantos.orangeTalents.model;
+package com.amandasantos.orangeTalents.domain.model;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;

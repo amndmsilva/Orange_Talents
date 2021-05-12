@@ -1,4 +1,4 @@
-package com.amandasantos.orangeTalents.exception;
+package com.amandasantos.orangeTalents.domain.exception;
 
 public class NegocioException  extends RuntimeException {
 

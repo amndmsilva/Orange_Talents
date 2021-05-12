@@ -1,4 +1,4 @@
-package com.amandasantos.orangeTalents.exceptionhandler;
+package com.amandasantos.orangeTalents.api.exceptionhandler;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 

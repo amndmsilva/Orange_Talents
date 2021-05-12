@@ -1,8 +1,8 @@
-package com.amandasantos.orangeTalents.service;
+package com.amandasantos.orangeTalents.domain.service;
 
-import com.amandasantos.orangeTalents.exception.NegocioException;
-import com.amandasantos.orangeTalents.model.Usuario;
-import com.amandasantos.orangeTalents.repository.UsuarioRepository;
+import com.amandasantos.orangeTalents.domain.exception.NegocioException;
+import com.amandasantos.orangeTalents.domain.model.Usuario;
+import com.amandasantos.orangeTalents.domain.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
