@@ -26,7 +26,7 @@ public class Usuario {
     private String email;
 
     @Column
-    @Size(max = 14)
+    @Size(max = 20)
     private String cpf;
 
     @Temporal(TemporalType.TIMESTAMP)
@@ -61,9 +61,7 @@ public class Usuario {
         return cpf;
     }
 
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
-    }
+    public void setCpf(String cpf) { this.cpf = cpf;  }
 
     public Date getDataNascimento() {
         return dataNascimento;

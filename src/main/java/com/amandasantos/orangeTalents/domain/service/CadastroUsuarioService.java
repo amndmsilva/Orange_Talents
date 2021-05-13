@@ -13,10 +13,10 @@ public class CadastroUsuarioService {
     public UsuarioRepository usuarioRepository;
 
     public Usuario salvar(Usuario usuario) {
-        Usuario usuarioExistente = usuarioRepository.findByEmail(usuario.getEmail());
+        Usuario usuarioExistente = usuarioRepository.findByEmailOrCpf(usuario.getEmail(), usuario.getCpf());
 
         if (usuarioExistente != null && !usuarioExistente.equals(usuario)){
-            throw new NegocioException("Já existe um cliente cadastrado com este e=mail.");
+            throw new NegocioException("Já existe um usuario cadastrado com este e-mail ou CPF");
         }
 
         return usuarioRepository.save(usuario);

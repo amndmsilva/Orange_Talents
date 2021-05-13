@@ -19,7 +19,7 @@ public class CadastroEnderecoService {
 
     public CadastroEndereco criar(CadastroEndereco cadastroEndereco) {
         Usuario usuario = usuarioRepository.findById(cadastroEndereco.getUsuario().getId())
-                .orElseThrow(() -> new NegocioException("Cliente não encontrado"));
+                .orElseThrow(() -> new NegocioException("Usuário não encontrado"));
 
         cadastroEndereco.setUsuario(usuario);
 
