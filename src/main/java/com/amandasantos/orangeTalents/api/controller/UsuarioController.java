@@ -2,7 +2,7 @@ package com.amandasantos.orangeTalents.api.controller;
 
 import com.amandasantos.orangeTalents.domain.model.Usuario;
 import com.amandasantos.orangeTalents.domain.repository.UsuarioRepository;
-import com.amandasantos.orangeTalents.domain.service.CadastroUsuarioService;
+import com.amandasantos.orangeTalents.domain.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,23 +13,23 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/usuario")
+@RequestMapping("/usuarios")
 public class UsuarioController {
 
     @Autowired
     private UsuarioRepository usuarioRepository;
 
     @Autowired
-    private CadastroUsuarioService cadastroUsuario;
+    private UsuarioService usuarioService;
 
     @GetMapping
     public List<Usuario> listar() {
         return usuarioRepository.findAll();
     }
 
-    @GetMapping("/{usuarioId}")
-    public ResponseEntity<Usuario> buscar(@PathVariable Long usuarioId) {
-        Optional<Usuario> usuario = usuarioRepository.findById(usuarioId);
+    @GetMapping("/{id}")
+    public ResponseEntity<Usuario> buscar(@PathVariable Long id) {
+        Optional<Usuario> usuario = usuarioRepository.findById(id);
 
         if (usuario.isPresent()) {
             return ResponseEntity.ok(usuario.get());
@@ -41,16 +41,16 @@ public class UsuarioController {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public Usuario cadastrar(@Valid @RequestBody Usuario usuario) {
-        return cadastroUsuario.salvar(usuario);
+        return usuarioService.salvar(usuario);
     }
 
-    @DeleteMapping("/{usuarioId}")
-    public ResponseEntity<Void> remover(@PathVariable Long usuarioId) {
-        if (!usuarioRepository.existsById(usuarioId)) {
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> remover(@PathVariable Long id) {
+        if (!usuarioRepository.existsById(id)) {
             return ResponseEntity.notFound().build();
         }
 
-        cadastroUsuario.excluir(usuarioId);
+        usuarioService.excluir(id);
 
         return ResponseEntity.noContent().build();
     }

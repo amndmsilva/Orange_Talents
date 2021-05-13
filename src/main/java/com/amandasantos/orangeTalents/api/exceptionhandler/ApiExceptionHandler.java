@@ -1,6 +1,8 @@
 package com.amandasantos.orangeTalents.api.exceptionhandler;
 
 import com.amandasantos.orangeTalents.domain.exception.NegocioException;
+import com.amandasantos.orangeTalents.domain.model.Campos;
+import com.amandasantos.orangeTalents.domain.model.Problema;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
@@ -39,13 +41,13 @@ public class ApiExceptionHandler extends ResponseEntityExceptionHandler {
     @Override
     protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex, HttpHeaders headers, HttpStatus status, WebRequest request) {
 
-        var campos = new ArrayList<Problema.Campo>();
+        var campos = new ArrayList<Campos>();
 
         for (ObjectError error : ex.getBindingResult().getAllErrors()) {
             String nome = ((FieldError) error).getField();
             String mensagem = messageSource.getMessage(error, LocaleContextHolder.getLocale());
 
-            campos.add(new Problema.Campo(nome, mensagem));
+            campos.add(new Campos(nome, mensagem));
         }
 
         var problema = new Problema();

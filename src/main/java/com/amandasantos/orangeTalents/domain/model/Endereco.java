@@ -7,7 +7,7 @@ import javax.validation.constraints.NotNull;
 import java.util.Objects;
 
 @Entity
-public class CadastroEndereco {
+public class Endereco {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,7 +22,7 @@ public class CadastroEndereco {
     private String logradouro;
 
     @NotBlank
-    private Long numero;
+    private String numero;
 
     private String complemento;
 
@@ -62,11 +62,11 @@ public class CadastroEndereco {
         this.logradouro = logradouro;
     }
 
-    public Long getNumero() {
+    public String getNumero() {
         return numero;
     }
 
-    public void setNumero(Long numero) {
+    public void setNumero(String numero) {
         this.numero = numero;
     }
 
@@ -114,7 +114,7 @@ public class CadastroEndereco {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        CadastroEndereco that = (CadastroEndereco) o;
+        Endereco that = (Endereco) o;
         return Objects.equals(id, that.id);
     }
 
