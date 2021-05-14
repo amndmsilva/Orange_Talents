@@ -13,16 +13,15 @@ public class UsuarioService {
     public UsuarioRepository usuarioRepository;
 
     public Usuario salvar(Usuario usuario) {
-        Usuario usuarioExistente = usuarioRepository.findByEmailOrCpf(usuario.getEmail(), usuario.getCpf());
 
-        if (usuarioExistente != null && !usuarioExistente.equals(usuario)){
+        String cpf = usuario.getCpf();
+        cpf=cpf.replace(".", "").replace("-", "");
+        Integer quantidadeUsuarios = usuarioRepository.countByEmailOrCpf(usuario.getEmail(), cpf);
+
+        if (quantidadeUsuarios > 0){
             throw new NegocioException("Já existe um usuario cadastrado com este e-mail ou CPF");
         }
 
         return usuarioRepository.save(usuario);
-    }
-
-    public void excluir(Long usuarioId) {
-        usuarioRepository.deleteById(usuarioId);
     }
 }
