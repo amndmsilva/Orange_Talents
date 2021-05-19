@@ -3,7 +3,6 @@ package com.amandasantos.orangeTalents.domain.model;
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
 import java.util.Date;
 import java.util.Objects;
 
@@ -16,17 +15,14 @@ public class Usuario {
 
     @Column
     @NotBlank
-    @Size(max = 255)
     private String nome;
 
     @Column
     @NotBlank
     @Email
-    @Size(max = 255)
     private String email;
 
     @Column
-    @Size(max = 20)
     private String cpf;
 
     @Temporal(TemporalType.TIMESTAMP)
